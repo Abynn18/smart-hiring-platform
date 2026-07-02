@@ -1,4 +1,5 @@
 package com.example.smarthiring.service;
+import com.example.smarthiring.config.JwtUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -48,6 +49,6 @@ public class UserService {
             throw new RuntimeException("Invalid password");
         }
 
-        return "Login successful";
+        return JwtUtil.generateToken(user.getEmail());
     }
 }
